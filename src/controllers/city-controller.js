@@ -44,6 +44,7 @@ const destroy = async (req, res) => {
 // get --> /city
 const getAll = async (req, res) => {
   try {
+    console.log("fhjs");
     const city = await cityService.getCity();
     return res.status(200).json({
       data: city,
@@ -62,25 +63,26 @@ const getAll = async (req, res) => {
   }
 };
 // get--> /city/:id
-const get = async (req, res) => {};
-try {
-  const city = await cityService.getCityById(req.params.id);
-  return res.status(200).json({
-    data: city,
-    succes: true,
-    message: "Succesfully fetched the  city",
-    err: {},
-  });
-} catch (error) {
-  console.log(error);
-  return res.status(500).json({
-    data: {},
-    succes: true,
-    message: "Not able to fetch the  city",
-    err: error,
-  });
-}
-
+const get = async (req, res) => {
+  try {
+    console.log("in this");
+    const city = await cityService.getCityById(req.params.id);
+    return res.status(200).json({
+      data: city,
+      succes: true,
+      message: "Succesfully fetched the  city",
+      err: {},
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      data: {},
+      succes: true,
+      message: "Not able to fetch the  city",
+      err: error,
+    });
+  }
+};
 // Patch--> /city/:id->reqbody
 const update = async (req, res) => {
   try {

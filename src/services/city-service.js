@@ -27,8 +27,8 @@ class CityService {
     }
   }
   async updateCity(id, data) {
-    return await this.cityRepository.updateCity(id, data);
     try {
+      return await this.cityRepository.updateCity(id, data);
     } catch (error) {
       console.log("====================================");
       console.log("Error occured at City Service layer");

@@ -1,12 +1,16 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const { PORT } = require("./config/serverConfig");
+
+const apiRoutes = require("./routes/index");
+
 const connect = require("./config/database");
-const CityService = require("./servicces/city-service");
+const CityService = require("./services/city-service");
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use("/api", apiRoutes);
 app.listen(PORT, async () => {
   console.log("====================================");
   console.log("Server Started at port ", PORT);
@@ -16,7 +20,6 @@ app.listen(PORT, async () => {
   console.log("mongodb connected");
 
   console.log("====================================");
-  const cityService = new CityService();
-  console.log(await cityService.getCity());
+
   //cityRepo.createCity({ name: "Lucknow" });
 });
