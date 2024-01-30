@@ -13,7 +13,8 @@ class CityRepository {
   }
   async deleteCity(id) {
     try {
-      return await City.findByIdAndDelete(id);
+      await City.findByIdAndDelete(id);
+      return true;
     } catch (error) {
       console.log("====================================");
       console.log("Something went wrong in city repository layer");
