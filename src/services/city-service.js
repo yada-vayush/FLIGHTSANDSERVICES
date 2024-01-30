@@ -17,7 +17,8 @@ class CityService {
   }
   async deleteCity(id) {
     try {
-      return await this.cityRepository.deleteCity(id);
+      const response = await this.cityRepository.deleteCity(id);
+      return response;
     } catch (error) {
       console.log("====================================");
       console.log("Error occured at City Service layer");
@@ -45,8 +46,9 @@ class CityService {
       throw error;
     }
   }
-  async getCityById() {
+  async getCityById(id) {
     try {
+      return await this.cityRepository.getCityById(id);
     } catch (error) {
       console.log("====================================");
       console.log("Error occured at City Service layer");
