@@ -45,7 +45,8 @@ class CityRepository {
   }
   async updateCity(id, data) {
     try {
-      return await City.findByIdAndUpdate(id, data, { new: true }).lean;
+      console.log("updatig");
+      return await City.findByIdAndUpdate(id, data, { new: true });
     } catch (error) {
       console.log("====================================");
       console.log("Something went wrong in city repository layer");
