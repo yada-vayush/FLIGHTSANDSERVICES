@@ -33,8 +33,14 @@ class CityRepository {
       throw error;
     }
   }
-  async getCity() {
+  async getCity(filter) {
     try {
+      if (filter.name) {
+        const cities = await City.find({
+          name: { $regex: `^${filter.name}`, $options: "i" },
+        }).exec();
+        return cities;
+      }
       return await City.find();
     } catch (error) {
       console.log("====================================");
@@ -45,7 +51,6 @@ class CityRepository {
   }
   async updateCity(id, data) {
     try {
-      console.log("updatig");
       return await City.findByIdAndUpdate(id, data, { new: true });
     } catch (error) {
       console.log("====================================");
